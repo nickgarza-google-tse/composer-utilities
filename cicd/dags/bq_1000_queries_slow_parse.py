@@ -39,6 +39,10 @@ with DAG(
     catchup=False,
     tags=["bigquery", "load_test", "antipattern"],
     user_defined_macros={"get_destination_table": get_destination_table},
+    default_args={
+        "retries": 2,
+        "retry_delay": datetime.timedelta(minutes=5),
+    },
 ) as dag:
     # Antipattern: Using a Python loop to statically generate 1000 separate tasks
     # This bloats the DAG definition size and makes the Airflow UI very slow to load
