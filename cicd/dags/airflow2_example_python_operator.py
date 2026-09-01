@@ -32,7 +32,7 @@ with DAG(
     schedule_interval="@daily",
     start_date=days_ago(2),
     catchup=False,
-    tags=["airflow2", "compatibility_test", "new_tag"],
+    tags=["airflow2", "compatibility_test", "new_tag_2"],
 ) as dag:
     print_date = PythonOperator(
         task_id="print_execution_date_task",
